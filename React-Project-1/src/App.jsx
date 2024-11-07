@@ -1,0 +1,22 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './index.css'
+// import Header from "./mainheader.jsx"
+// import TabsLink  from './headerTabs'
+import Navbar from './Navbar.jsx'
+import Hero from './Hero.jsx'
+
+function App() {
+ return (
+<>
+
+
+
+<Navbar/>
+<Hero/>
+</>
+ )
+}
+
+export default App
