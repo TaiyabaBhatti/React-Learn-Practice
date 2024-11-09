@@ -1,5 +1,4 @@
 import Cards from "./Cards"
-import Textform from "./Textform"
 
 function Hero(){
 return (<>
@@ -12,9 +11,7 @@ return (<>
 <Cards title="Errors" desc="Never ever restore the bugs" btnText="More Around" link="https://www.freepik.com" listArr={["A","B","C"]} price={800}/>
 
 </section> */}
-<section className="mt-10 px-5 m-auto max-w-7xl ">
-<Textform />
-</section>
+
 </>)
 }
 
