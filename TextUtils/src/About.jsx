@@ -4,7 +4,8 @@ import { useState } from "react";
 
 export default function About() {
 
-    let [mytheme,themeState] = useState(
+// added dark mode just in about section 
+  let [mytheme,themeState] = useState(
          {
         backgroundColor : "white",
         color:"black"
