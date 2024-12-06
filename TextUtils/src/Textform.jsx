@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 
-export default function Textform() {
+export default function Textform(props) {
   let [text, textChange] = useState("Enter Text");
   let updateUpper = () => {
     let newText = text.toUpperCase();
@@ -28,7 +28,7 @@ export default function Textform() {
           Enter Your Text Below
         </label>
         <textarea
-          className="rounded-sm p-2 outline-none border-2 border-gray-300"
+          className={`bg-${props.modeTheme?"white":"black"} text-${props.modeTheme?"black":"white"}  rounded-sm p-2 outline-none border-2 border-gray-300`}
           id="exampleFormControlTextarea1"
           rows="8"
           value={text}
