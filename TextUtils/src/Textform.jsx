@@ -6,10 +6,12 @@ export default function Textform(props) {
   let updateUpper = () => {
     let newText = text.toUpperCase();
     textChange(newText);
+
   };
   let updateLower = () => {
     let newText = text.toLowerCase();
     textChange(newText);
+    props.showAlert({text},"success")
   };
   let clear = () => {
     let newText = "";

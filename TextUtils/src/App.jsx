@@ -9,36 +9,36 @@ import AlertDialogue from './AlertDialogue'
 function App() {
 
 const [mode,setMode] =useState(true);
-const [text,setText] =useState("Light");
-const [showComponent,setShowComponent] =useState(true);
-
+// const [showComponent,setShowComponent] =useState(true);
+const [alert, setAlert] = useState(null);
+//alert an object
 const onDelete = () =>{
-
-if(true){
-setShowComponent(false);
-}
-
-else{
-    setShowComponent(true);
-}
+setAlert(null)
 }
 
 
+const UpdateAlert = (message, type) => {
+    setAlert(
+        {
+            msg:message,
+            typ:type
+        }
+    )
+}
 
 
 const toggleMode = () => {
-
 if(mode){
 // light mode is alreday enabled, now switch to dark
 setMode(false);
-setText("Dark")
 document.body.style.backgroundColor="#828385";
+UpdateAlert("Dark mode Enabled","success");
 }
 
 else{
     setMode(true);
-    setText("Light")
     document.body.style.backgroundColor="white";
+    UpdateAlert("Light mode Enabled","success");
 }
 }
 
@@ -46,9 +46,10 @@ else{
 
  return (
 <>
-<AlertDialogue show={onDelete}/>
-<Navbar mode={mode}  toggle={toggleMode} switchText= {text}/>
-<Hero mode={mode}/>
+{/* <div>{showComponent && <AlertDialogue show={onDelete}/>}</div> */}
+<AlertDialogue alert={alert} show={onDelete}/>
+<Navbar mode={mode}  toggle={toggleMode}/>
+<Hero mode={mode} showAlert = {UpdateAlert}/>
 {/* <About/> */}
 </>
  )
