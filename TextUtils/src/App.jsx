@@ -12,11 +12,6 @@ const [mode,setMode] =useState(true);
 // const [showComponent,setShowComponent] =useState(true);
 const [alert, setAlert] = useState(null);
 //alert an object
-const onDelete = () =>{
-setAlert(null)
-}
-
-
 const UpdateAlert = (message, type) => {
     setAlert(
         {
@@ -24,10 +19,16 @@ const UpdateAlert = (message, type) => {
             typ:type
         }
     )
+    setTimeout(() => {
+        setAlert(null)
+    }, 3000);
 }
 
 
 const toggleMode = () => {
+
+  
+    
 if(mode){
 // light mode is alreday enabled, now switch to dark
 setMode(false);
@@ -39,6 +40,8 @@ else{
     setMode(true);
     document.body.style.backgroundColor="white";
     UpdateAlert("Light mode Enabled","success");
+    // title is the direct property of document object
+    document.title = "Light mode"
 }
 }
 
@@ -47,7 +50,7 @@ else{
  return (
 <>
 {/* <div>{showComponent && <AlertDialogue show={onDelete}/>}</div> */}
-<AlertDialogue alert={alert} show={onDelete}/>
+<AlertDialogue alert={alert}/>
 <Navbar mode={mode}  toggle={toggleMode}/>
 <Hero mode={mode} showAlert = {UpdateAlert}/>
 {/* <About/> */}
