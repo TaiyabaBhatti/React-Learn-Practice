@@ -7,12 +7,6 @@ const [ticket,setTicket] = useState(generate(3))
 // const [target,setTarget] = useState(false)
 
 let isWinning = sum(ticket) == 15?"Lottery Win": "You lose";
-
-
-
-
-
-
   return (
     <div>
       <h1 className='text-2xl text-blue-700 font-bold text-center'>Lottery Game!!!</h1>
