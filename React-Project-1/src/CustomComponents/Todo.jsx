@@ -12,7 +12,7 @@ export default function Todo() {
     }
 
     setArr((prev) => {
-      return [...prev, { task: newItem, key: uuidv4() }];
+      return [...prev, { task: newItem, key: uuidv4(),isDone:false }];
     });
 
     setNewItem("");
@@ -50,12 +50,29 @@ export default function Todo() {
 
     })
    }
-
-
-
   )
 
   };
+
+const taskDone = (id) => {
+    setArr((preArr) => {
+        return preArr.map((item) => {
+    
+            if(item.key === id){
+                return {...item,isDone:item.isDone=true}
+            }
+    
+            else{
+                return item
+            }
+    
+        })
+       }
+      )
+
+
+}
+
 
   return (
     <div className="m-auto py-2 px-3 w-fit mt-6 bg-gray-400">
@@ -85,6 +102,7 @@ export default function Todo() {
         listItems={todosArr}
         remove={deletItem}
         update={updateSpecific}
+        done={taskDone}
       />
     </div>
   );
