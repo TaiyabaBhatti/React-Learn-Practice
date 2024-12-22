@@ -53,7 +53,7 @@ setRecipeShow(true);
         <InputListBlock inputText={newIngre} Onhandler={handleOnChange}  addItem={addIngre} preventDef={preventSubmission}/>
         <DisplayIngredient ingredients={ingreArr}/>
         {ingreArr.length > 0? <GenerateRecipe recipeGen={generate}/>:" "}
-        {recipeShow?<ClaudeRecipe/>:" "}
+        {recipeShow?<ClaudeRecipe ingredientArr={ingreArr}/>:" "}
     </div>
 
     </section>
