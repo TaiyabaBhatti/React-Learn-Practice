@@ -6,7 +6,6 @@ export default function TodoDisplay(props) {
     props.listItems && 
    <ul className='ml-5 mt-5 flex flex-col gap-y-3'>
 <h1 className='font-bold text-lg'>Display Todos..</h1>
-
 {props.listItems.map((items)=> {
     return <li key={items.key} className={`flex justify-between gap-x-3  px-2 py-1 bg-${items.isDone ?"pink-300" : "none"}`} >
          <span>{items.task}</span>

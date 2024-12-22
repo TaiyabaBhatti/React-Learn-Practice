@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from './Header'
 import InputListBlock from './InputListBlock'
 import DisplayIngredient from './DisplayIngredient'
-import {v4 as uuidv4} from "uuid"
+// import {v4 as uuidv4} from "uuid"
 import GenerateRecipe from './GenerateRecipe'
 import ClaudeRecipe from './ClaudeRecipe'
 
@@ -28,7 +28,7 @@ const addIngre = () => {
   }
 
   setIngreArr((prev) => {
-    return [...prev, {ingredient: newIngre, key: uuidv4()}];
+    return [...prev,newIngre];
   });
   setNewIngre("");
 }
