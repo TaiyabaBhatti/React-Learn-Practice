@@ -14,6 +14,7 @@ export default function ChefClaudeCard() {
   const [newIngre, setNewIngre] = useState("");
   const [recipeShow, setRecipeShow] = useState("");
   const [ingreArr, setIngreArr] = useState([]);
+  const [loading, setLoading] = useState(false);
 
 const handleOnChange = (event) => {
 
@@ -41,9 +42,19 @@ event.preventDefault();
 }
 
 async function getRecipe() {
-  const contentMarkDownFormat = await getRecipeFromChef(ingreArr);
-  console.log(contentMarkDownFormat)
-setRecipeShow(contentMarkDownFormat);
+  try{
+    setLoading(true)
+    const contentMarkDownFormat = await getRecipeFromChef(ingreArr);
+    setRecipeShow(contentMarkDownFormat);
+  }
+  
+  catch(err){
+console.error(err);
+  }
+  finally{
+    setLoading(false)
+  }
+
 }
 
 
@@ -58,6 +69,14 @@ setRecipeShow(contentMarkDownFormat);
         <InputListBlock inputText={newIngre} Onhandler={handleOnChange}  addItem={addIngre} preventDef={preventSubmission}/>
         <DisplayIngredient ingredients={ingreArr}/>
         {ingreArr.length > 0? <GenerateRecipe recipeGen={getRecipe}/>:" "}
+
+        {loading && (
+          <div className="flex justify-center items-center mt-6">
+            <div className="loader"></div>
+            <p className="text-gray-600 text-sm ml-4">Fetching your recipe...</p>
+          </div>
+        )}
+
         {recipeShow!=""?<ClaudeRecipe recipeContent={recipeShow}/>:" "}
     </div>
 
