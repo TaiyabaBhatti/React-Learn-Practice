@@ -1,30 +1,29 @@
 import React from 'react'
-import { getRecipeFromChef } from './ai'
+import ReactMarkdown from "react-markdown"
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
-export default function ClaudeRecipe({ ingredientArr}) {
 
+export default function ClaudeRecipe({recipeContent}) {
 
-  const content =  getRecipeFromChef( ingredientArr)
-  console.log(content)
+    // getRecipeFromChef(ingredientArr)  this will return a promise, so we have to handle it.
+  
+   
 
 
   return (
-    <section className='px-10 mt-10'>
+    <section className='px-10 mt-10 text-gray-600 text-base'>
+        <h1 className='font-bold text-2xl text-gray-950 mb-6'>Chef-Claude Recommends:</h1>
+<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}  components={{
+          h1: ({ children }) => <h1 className="text-3xl font-bold mb-4">{children}</h1>,
+          h2: ({ children }) => <h2 className="text-3xl font-semibold mb-3">{children}</h2>,
+          p: ({ children }) => <p className="mb-4">{children}</p>,
+          ul: ({ children }) => <ul className="list-disc list-inside mb-4">{children}</ul>,
+          ol: ({ children }) => <ol className="list-decimal list-inside mb-4">{children}</ol>,
+          li: ({ children }) => <li className="mb-2">{children}</li>,
+          strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+        }}>{recipeContent}</ReactMarkdown>
 
-
-
-{/* <div>
-    <h1 className='font-semibold text-2xl text-gray-950 my-3'>Suggested recipe:</h1>
-    <p className='text-gray-500'>Based on your available ingredients, I would recommend making a <strong>Creamy Garlic Parmesan Chicken dish</strong>. Here’s the recipe.</p>
-</div> */}
-
-{/* <div className='my-7'>
-    <h1 className='font-bold text-base text-gray-700'>Ingredients:</h1>
-    <ul className='list-disc pl-5 text-gray-500 mt-3'>
-<li className=''>4 boneless, skinless chicken breasts</li>
-<li>Salt and pepper to taste</li>
-    </ul>
-</div> */}
 
 
     </section>
