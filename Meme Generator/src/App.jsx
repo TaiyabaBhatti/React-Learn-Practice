@@ -6,8 +6,8 @@ import MemeCard from './Components/MemeCard'
 
 
 function App() {
- 
 document.body.style.backgroundColor = "gray";
+
 
   return (
     <>
