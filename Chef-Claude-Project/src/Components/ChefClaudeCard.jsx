@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useRef, useEffect } from 'react'
 import Header from './Header'
 import InputListBlock from './InputListBlock'
 import DisplayIngredient from './DisplayIngredient'
@@ -15,6 +15,20 @@ export default function ChefClaudeCard() {
   const [recipeShow, setRecipeShow] = useState("");
   const [ingreArr, setIngreArr] = useState([]);
   const [loading, setLoading] = useState(false);
+const myRef = useRef(null);
+
+ 
+useEffect(()=>{
+
+if(recipeShow != "" && myRef.current != null){
+  myRef.current.scrollIntoView()
+}
+
+},[recipeShow])
+
+
+
+
 
 const handleOnChange = (event) => {
 
@@ -52,6 +66,7 @@ async function getRecipe() {
 console.error(err);
   }
   finally{
+   
     setLoading(false)
   }
 
@@ -77,7 +92,7 @@ console.error(err);
           </div>
         )}
 
-        {recipeShow!=""?<ClaudeRecipe recipeContent={recipeShow}/>:" "}
+        {recipeShow!=""?<ClaudeRecipe recipeContent={recipeShow} refValue={myRef}/>:" "}
     </div>
 
     </section>
