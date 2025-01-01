@@ -25,6 +25,10 @@ export async function getRecipeFromChef(ingredientsArr) {
       max_tokens: 1024,
     });
 
+
+
+    
+    console.log("Raw API Response:", JSON.stringify(response, null, 2));
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);

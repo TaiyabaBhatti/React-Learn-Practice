@@ -4,11 +4,11 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 //  utilizing plugins like remark-gfm and rehype-raw to achieve further styling
-export default function ClaudeRecipe({ recipeContent, refValue }) {
+export default function ClaudeRecipe(props) {
   // getRecipeFromChef(ingredientArr)  this will return a promise, so we have to handle it.
 
   return (
-    <section className="px-10 mt-10 text-gray-600 text-base" ref={refValue}>
+    <section className="px-10 mt-10 text-gray-600 text-base" ref={props.refValue}>
       <h1 className="font-bold text-2xl text-gray-950 mb-6">
         Chef-Claude Recommends:
       </h1>
@@ -35,7 +35,7 @@ export default function ClaudeRecipe({ recipeContent, refValue }) {
           ),
         }}
       >
-        {recipeContent}
+        {props.recipeContent}
       </ReactMarkdown>
     </section>
   );

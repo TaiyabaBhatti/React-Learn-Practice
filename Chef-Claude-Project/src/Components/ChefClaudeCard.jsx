@@ -6,7 +6,7 @@ import DisplayIngredient from './DisplayIngredient'
 import GenerateRecipe from './GenerateRecipe'
 import ClaudeRecipe from './ClaudeRecipe'
 import { getRecipeFromChef } from './ai'
-// import { getRecipeFromChef } from './ai'
+
 
 
 export default function ChefClaudeCard() {
@@ -21,7 +21,7 @@ const myRef = useRef(null);
 useEffect(()=>{
 
 if(recipeShow != "" && myRef.current != null){
-  myRef.current.scrollIntoView()
+  myRef.current.scrollIntoView({behavior:"smooth"})
 }
 
 },[recipeShow])
@@ -50,7 +50,6 @@ const addIngre = () => {
   setNewIngre("");
 }
 
-
 const preventSubmission = (event) => {
 event.preventDefault();
 }
@@ -59,6 +58,7 @@ async function getRecipe() {
   try{
     setLoading(true)
     const contentMarkDownFormat = await getRecipeFromChef(ingreArr);
+    
     setRecipeShow(contentMarkDownFormat);
   }
   
@@ -66,7 +66,6 @@ async function getRecipe() {
 console.error(err);
   }
   finally{
-   
     setLoading(false)
   }
 
