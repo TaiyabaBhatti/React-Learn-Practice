@@ -28,7 +28,7 @@ export async function getRecipeFromChef(ingredientsArr) {
 
 
     
-    console.log("Raw API Response:", JSON.stringify(response, null, 2));
+   
     return response.choices[0].message.content;
   } catch (err) {
     console.error(err.message);
