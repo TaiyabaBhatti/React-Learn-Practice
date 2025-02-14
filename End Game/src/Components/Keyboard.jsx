@@ -2,23 +2,21 @@ import React, { useEffect, useState } from 'react'
 // import Button from './KeyboardKey'
 // import KeyboardKey from './KeyboardKey'
 
-export default function Keyboard({word}) {
+export default function Keyboard({word,guess}) {
 
 const [matchletter,setMatchLetter] = useState(null);
 useEffect(()=>{
 
 },[])
 
-const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',]
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lettersArr = letters.split("");
 const verifyStatus = (letter,event) =>{
-  const lowerLetter = letter.toLowerCase();
+  
   const target = event.target;
-  
-  
-if(word.indexOf(lowerLetter) != -1){
-setMatchLetter()
+if(word.indexOf(letter) != -1){
 target.style.backgroundColor = "green"
-console.log(lowerLetter)
+console.log(letter)
 }
 
 else {
@@ -32,8 +30,8 @@ else {
   return (
     <div className='flex flex-wrap gap-1.5 justify-center'>
       
-{letters.map((element,index) => {
-return  <button onClick={(event)=>verifyStatus(element,event)} className={`p-3 cursor-pointer w-10 h-10 text-black rounded-sm text-center ${matchletter?"bg-green-400":"bg-red-500"} bg-yellow-500`}>{element}</button>
+{lettersArr.map((element,index) => {
+return  <button onClick={(event)=>guess(element,event)} className={`p-3 cursor-pointer w-10 h-10 text-black rounded-sm text-center ${matchletter?"bg-green-400":"bg-red-500"} bg-yellow-500`}>{element}</button>
 })}
     </div>
   )
