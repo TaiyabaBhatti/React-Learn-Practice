@@ -6,6 +6,8 @@ import './index.css'
 import Navbar from './Navbar'
 import AlertDialogue from './AlertDialogue'
 
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+
 function App() {
 
 const [mode,setMode] =useState(true);
@@ -48,13 +50,17 @@ else{
 
 
  return (
-<>
-{/* <div>{showComponent && <AlertDialogue show={onDelete}/>}</div> */}
+<Router>
+
 <AlertDialogue alert={alert}/>
 <Navbar mode={mode}  toggle={toggleMode}/>
-<Hero mode={mode} showAlert = {UpdateAlert}/>
-{/* <About/> */}
-</>
+<Routes>
+          <Route path="/hero" element={  <Hero mode={mode} showAlert = {UpdateAlert}/>}>
+          </Route>
+          <Route path="/about" element={<About/>}>
+          </Route>
+        </Routes>
+</Router>
  )
 }
 

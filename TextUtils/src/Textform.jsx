@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 
 export default function Textform(props) {
   let [text, textChange] = useState("Enter Text");
+   let setCount = useRef(0);
+
+   console.log("render")
+
+   useEffect(()=>{
+
+
+setCount.current = setCount.current + 1;
+
+
+   })
+
+
   let updateUpper = () => {
     let newText = text.toUpperCase();
     textChange(newText);
@@ -57,6 +70,7 @@ export default function Textform(props) {
           Characters
         </p>
       </div>
+      <p>{setCount.current} times</p>
     </div>
   );
 }
