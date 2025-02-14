@@ -5,24 +5,30 @@ import Options from './Options'
 import Keyboard from './Keyboard'
 import WordScreen from './WordScreen'
 import guessWord from './generateWord';
+import Button from './Button';
+import { languages } from './language'
 
-export default function GameBoard() {
+export default function GameBoard({word}) {
 
-  const [word,setWord] = useState([]);
-  const [guessLetters,setGuessLetters] = useState([])
-
-  console.log(guessLetters)
+ 
+  const [guessLetters,setGuessLetters] = useState([]);
+  const [guessCount,setGuessCount] = useState(0);
+  const [display,setDisplay] = useState("Game Start");
 
   useEffect(()=>{
-  const wordArr = guessWord();
-  console.log(wordArr)
-  setWord(wordArr)
-  
-  },[])
+    if(guessCount === 8){
+setDisplay("Game Over");
+console.log("Game Over");
+
+    }
+
+    },[guessCount])
+
+
+ 
   
   const verifyStatus = (letter,event) =>{
-  
-    const target = event.target;
+  const target = event.target;
   if(word.indexOf(letter) != -1){
 
   target.style.backgroundColor = "green"
@@ -30,7 +36,9 @@ export default function GameBoard() {
   }
   
   else {
-      target.style.backgroundColor = "red"
+    setGuessCount(prevCount => prevCount += 1)
+    target.style.backgroundColor = "red";
+    
       
   }
   }
@@ -74,16 +82,40 @@ return [...uniqueSet]
      
      {/* Game status */}
      <p className='text-white'>
-      Status: TBS
+      Guess Make: {guessCount} 
+      <br></br>
+      Status: {display}
      </p>
      
+
       </div>
-<Options/>
+<div className='flex flex-wrap gap-x-1 gap-y-2 justify-center'>
+      
+{languages.map((element,index) => {
+  const status = index < guessCount;
+return <span  className={`p-2 ${element.color} ${status?"line-through":""}  rounded-sm text-center text-white`} key={index} >{element.text}</span>
+}) }
+    </div>
+
 {/* Guess Number array */}
-<WordScreen word={word}/>
+
+ <div className='flex  gap-x-2 justify-center'>   
+{word.map((element,index)=>{
+  const status = (word.indexOf(element) != -1) && guessLetters.includes(element) ? true : false;
+  // if(!status){
+  //   setGuessCount(prevCount => prevCount++)
+  // }
+return <Button text={element} isCorrect={status} key={index}/>
+})}
+
+
+    </div>
+
+
+
 
 {/* Game Keyboard */}
-<Keyboard  word={word} guess={storeLetter}/>
+<Keyboard  word={word} guess={storeLetter} disabled ={display}/>
     </section>
   )
 }

@@ -4,7 +4,7 @@ import Button from './Button';
 import guessWord from './generateWord';
 
 
-export default function WordScreen({word}) {
+export default function WordScreen({word,}) {
 
 
 
