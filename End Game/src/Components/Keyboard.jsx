@@ -31,7 +31,7 @@ const gameOver = disabled === "Game Over"
     <div className='flex flex-wrap gap-1.5 justify-center'>
       
 {lettersArr.map((element,index) => {
-return  <button onClick={(event)=>guess(element,event)} disabled = {gameOver} className={`p-3 cursor-pointer w-10 h-10 text-black rounded-sm text-center ${matchletter?"bg-green-400":"bg-red-500"} bg-yellow-500`}>{element}</button>
+return  <button onClick={(event)=>guess(element,event)} disabled = {game} className={`p-3 cursor-pointer w-10 h-10 text-black rounded-sm text-center ${matchletter?"bg-green-400":"bg-red-500"} bg-yellow-500`}>{element}</button>
 })}
     </div>
   )
