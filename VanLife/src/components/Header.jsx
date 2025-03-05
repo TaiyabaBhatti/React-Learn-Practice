@@ -1,15 +1,18 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import {Link,NavLink} from "react-router-dom"
 
 export default function Header() {
   return (
-  <header className="flex flex-row justify-between py-9 px-6">
+  <header className="h-24 flex flex-row justify-between py-9 px-6">
     <div>
-        <h1 className='font-black text-2xl'>#VANLIFE</h1>
+        <Link to={"/home"} className='font-black text-2xl'>#VANLIFE</Link>
     </div>
-    <nav className='flex flex-row items-center gap-x-2.5 font-semibold text-base'>
-     <Link to={'/about'}>About</Link>
-     <Link>Vans</Link>
+    <nav id='nav-tabs' className='flex flex-row items-center gap-x-2.5 font-semibold text-base text-medium-gray'>
+     <NavLink to={'/about'} className={({isActive})=> (isActive?"active":"")}>About</NavLink>
+     <NavLink to={"/vans"} className={({isActive})=> (isActive?"active":"")}>Vans</NavLink>
+
+
+
     </nav>
   </header>
   )
