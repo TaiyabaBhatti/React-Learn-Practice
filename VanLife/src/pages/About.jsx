@@ -10,7 +10,7 @@ export default function About() {
 
 </section>
 
-<Wrapper className="py-8 space-y-8 max-w-2xl">
+<Wrapper className="py-8 space-y-8 max-w-2xl m-auto">
 <h1 className='font-bold text-3xl'>Don’t squeeze in a sedan when you could relax in a van</h1>
 <p className='font-medium text-base'>Our mission is to enliven your road trip with the perfect travel van rental. Our vans are recertified before each trip to ensure your travel plans can go off without a hitch. (Hitch costs extra 😉) <br /> <br /> Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
 
